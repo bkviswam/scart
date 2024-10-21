@@ -1,0 +1,23 @@
+
+version: '3.8'
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db-sc
+    environment:
+      MYSQL_ROOT_PASSWORD: 1q2w3e4r5t
+      MYSQL_DATABASE: shopping_cart_db
+      MYSQL_USER: sc_user
+      MYSQL_PASSWORD: 1q2w3e4r
+    ports:
+      - "3306:3306"
+    networks:
+      - sc-service-network
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
+
+networks:
+  sc-service-network:
